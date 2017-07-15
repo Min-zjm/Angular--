@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-animate.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="calc">
+		 	<div ng-controller="c1">
+		 	     <input type="number" ng-model='a'>
+		 	     <input type="number" ng-model='b'>
+		 	     <p>结果={{a*b}}</p>
+		 	     
+		 	     <my-app>hello</my-app>
+		 	     <p ng-bind='a+b'></p>
+		 	</div>
+		 	<div ng-controller="c2" ng-init="s=true;">
+		 	    <input type="text" ng-model='price'>
+		 	     <p>{{price | currency}}</p>
+		 	     <p>{{price | uppercase}}</p>
+		 	     <!--<p ng-bind="price | uppercase">{{}}</p>-->
+		 	     <p ng-show="s">{{price | uppercase}}</p>
+		 	     <button type="button" ng-click="s=!s">click</button>
+		 	     
+		 	     <!--
+				 <input type="text" ng-model='price' ng-repeat="x in names">
+				    <p>{{ x.Name }}</p>
+				    <p>{{ x.Country | uppercase }}</p>
+				 -->
+		 	</div>
+		</div>
+		 <script>
+		 	  var app=angular.module('calc',[]);
+		 	      app.directive('my-app',function(){
+		 	      	     return{
+		 	      	     	template:'<h1>hello</h1>'
+		 	      	     }
+		 	      })
+		 	      app.controller("c1",function($scope){
+		 	      	       $scope.a=10;
+		 	      	       $scope.b=20;
+		 	      })
+		 	      app.controller("c2",function($scope){
+		 	      	       $scope.price=9.99;
+	 	          })
+		 </script>
+	</body>
+</html>

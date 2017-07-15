@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script src="js/angular-route.js"></script>
+	</head>
+	<body>
+		<div ng-app="router" ng-controller='page'>  <!--路由-->
+			 <a href="#!/">首页</a>
+			 <a href="#!/register">分页1:注册</a>
+			 <a href="#!/logeIn">分页2:登录</a>
+			 <a href="#!/backgroundChange">背景动画</a>
+			 <a href="#!/404">taobao</a>
+			 <div ng-view></div>     <!--返回首页-->
+		</div>
+		<script>
+			  var app=angular.module('router',['ngRoute']);
+			      app.controller('page',function($scope){
+			      	
+			      });
+			      app.config(['$routeProvider',function($routeProvider){
+			  			$routeProvider.when('/',{
+		      	        	/*template:'首页'*/
+		      	        	templateUrl:'manageAll/bossPage.html'
+		      	        	
+		      	        })
+			  			.when('/register',{
+	      	        	    /*template:'首页'*/
+	      	        	    templateUrl:'manageAll/table2.html'
+	      	        	    
+		      	        })
+		      	        .when('/logeIn',{
+		      	        	/*template:'打印页'*/
+		      	        	templateUrl:'manageAll/table3.html'
+		      	        	
+		      	        })
+		      	        .when('/backgroundChange',{
+		      	        	/*template:'淘宝页'*/
+		      	        	templateUrl:'manageAll/color.html'
+		      	        	
+		      	        })
+		      	        .otherwise({redirectTo:'/404',
+		      	        	template:'undefind'
+		      	        })
+			      }])
+		</script>
+	</body>
+</html>

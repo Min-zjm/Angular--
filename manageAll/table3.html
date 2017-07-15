@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist2-bootstrap/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="app1"> <!--登录-->
+			 	       <div class="table" style="width:602px;height:462px;border:1px solid indianred;margin:0 auto;border-radius:10px;">
+	                   <div class="panel panel-primary" style="width:600px;height:60px;border:1px solid indianred;margin-bottom:20px;background:cornflowerblue;border-top-left-radius:10px;border-top-right-radius:10px;text-align:center;line-height:60px;">登录</div>
+	                   
+	                   <form class="form" style="width:500px;margin-left: 48px;"ng-controller='register' name='register1' novalidate>
+		                    <div class="form-group">
+		                           <label for="exampleInputEmail1">user</label>
+		                           <input type="name" class="form-control" id="exampleInputEmail1" placeholder="user" ng-model='userName' name='userName' required>
+		                           <span style="color:blueviolet" class="error" ng-show="register1.userName.$dirty || register.userName.$invalid">
+		                           	   <span ng-show='register1.userName.$error.required || register.user.$invalid'>用戶必須填</span>
+		                           </span>
+	                        </div>
+	                        <div class="form-group">
+		                          <label for="exampleInputEmail1">phine number</label>
+		                          <input type="number" class="form-control" id="exampleInputEmail1" placeholder="phineNumber" ng-model='phineNumber' name='phineNumber' required>
+	                              <span style="color:blueviolet" class="error" ng-show="register1.phineNumber.$dirty || register.phineNumber.$invalid">
+		                           	   <span ng-show='register1.phineNumber.$error.required || register.phineNumber.$invalid'>電話必須填</span>
+		                          </span>
+	                        </div>
+							<div class="form-group">
+									<label for="exampleInputEmail1">Email address</label>
+									<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model='Email' name='Email' required>
+							        <span style="color:blueviolet" class="error" ng-show="register1.Email.$dirty || register.Email.$invalid">
+		                           	   <span ng-show='register1.Email.$error.required || register.Email.$invalid'>郵件地址必須填</span>
+		                            </span>
+							</div>
+						    <div class="form-group">
+							       <label for="exampleInputPassword1">Password</label>
+							       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model='Password' name='Password' required>
+						           <span style="color:blueviolet" class="error" ng-show="register1.Password.$dirty || register.Password.$invalid">
+		                           	   <span ng-show='register1.Password.$error.required || register.Password.$invalid'>密碼必須填</span>
+		                           </span>
+						    </div>
+	                        <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                       </div>
+	    </div>
+	    <><script>
+	    	     var app=angular.module('app1',[]);
+	    	         app.controller('register',function($scope,$http,$rootScope){
+	    	         	  $rootScope.url='http://118.244.212.82:3000';     //IP地址
+	    	         	  $rootScope.userName='';
+	    	         	  $rootScope.phineNumber='';
+	    	         	  $rootScope.Email='';
+	    	         	  $rootScope.Password='';
+//	    	         	  $rootScope.Pic='';
+	    	         	  $scope.submit=function(){
+	    	         	  	  $http.post($rootScope.url+'/Handler/UserHandler.ashx?action=add',{//請求地址
+	    	         	  	  	    userName:$scope.userName,
+	    	         	  	  	    phone:$scope.phineNumber,
+	    	         	  	  	    email:$scope.Email,
+	    	         	  	  	    userPwd:$scope.Password,
+//	    	         	  	  	    userPic:$scope.Pic
+	    	         	  	  }).then(function successCallback(res){
+	    	         	  	  	    if(res.status==200){               //success
+	    	         	  	  	    	  alert(res.date.success);
+	    	         	  	  	    }
+	    	         	  	  },function errorCallback(error){
+	    	         	  	  	    console.log(error)
+	    	         	  	  })
+	    	         	  }
+	    	         })
+	    </script> 
+	</body>
+</html>

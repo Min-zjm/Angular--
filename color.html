@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			   .box{
+			   	    width:200px;
+			   	    height:200px;
+			   	    border:1px solid indianred;
+			   }
+			   .red{
+			   	   background:red; 
+			   	   transition:all 0.5s linear;
+			   }
+			   .blue{
+			   	   background:blue; 
+			   	   transition:all 0.5s linear;
+			   }
+			   .green{
+			   	   background:green;
+			   	   transition:all 0.5s linear; 
+			   }
+			   .scale{
+			   	   height:10px;
+			   	   width:10px;
+			   	   transition:all 0.5s linear;
+			   }
+			   .ng-hide{
+			   	    height:0px;
+			   	    width:0px;
+			   	    transition:all 0.5s linear;
+			   }
+		</style>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script src="js/angular-animate.min.js"></script>
+		<script src="js/angular-route.js"></script>
+	</head>
+	<body>
+		 <div ng-app='app1'>
+		 	  <div ng-controller='chang'>
+		 	  	   <div class="box" ng-class='color' ng-model='box1' ng-show='true' ng-hide='false'></div>
+		 	  	   <select ng-model='color'>
+		 	  	   	     <option ng-repeat='x in arr' value='{{x.name}}'>{{x.value}}</option>
+		 	  	   </select>
+		 	  	   
+		 	  	   <input type="button" value='toggle' ng-click="hide">
+		 	  </div>
+		 </div>
+		 <script>
+		 	     var app=angular.module('app1',['ngAnimate']) /*'ngAnimate'*/
+		 	         app.controller('chang',function($scope){
+		 	         	 $scope.show=true;
+		 	         	 $scope.arr=[ //div        //字
+		 	         	     {'name':"red",'value':"红色"},  //red:--css
+		 	         	     {'name':"blue",'value':"蓝色"},
+		 	         	     {'name':"green",'value':"绿色"}
+		 	         	 ]
+		 	         	
+		 	         })
+		 </script>
+	</body>
+</html>

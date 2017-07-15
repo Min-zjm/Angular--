@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			  body{
+			  	margin: 0;
+			  }
+			   .main{
+			   	   height:100%;
+			   }
+			   .mainHeader{
+			       width:100%;
+			       height:50px;
+			       background:cornflowerblue;
+			       text-align: center;
+			       line-height:50px;
+			   }
+			   span{
+			   	   display:block;
+			   	   height:50px;
+			   	   width:100px;
+			   	   border:1px solid mediumpurple;
+			   	   cursor: pointer;
+			   }
+			   .left{
+			   	   height:900px; 
+			   	   width:150px;
+			   	   background:indianred;
+			   	   float: left;
+			   }
+			   .right{
+			   	   height:900px; 
+			   	   width:100%;
+			   	   background:lightgray;
+			   }
+		</style>
+	</head>
+	<body>
+		<div ng-app='pages' na-controller='page1'>
+			  
+		</div>
+		<div class="main">
+			  <div class="mainHeader"><span>菜单</span>
+		      </div>
+			  <div class=-"left" ng-model='register'>
+					  	<p>{{分页1--登录}}</p>
+					  	<p>{{分页2--注册}}</p>
+		      </div>
+		      <div class="right">视图区
+		      </div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript">
+			    $('span').click(function(){
+			    	$('.left').toggle()
+			    })
+		</script>
+			    
+		
+	</body>
+</html>

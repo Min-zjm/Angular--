@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist2-bootstrap/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+	</head>
+	<body>
+                <div ng-app="app1" style='width:70%;'>          <!-- 一个模板  -->         
+                    <div ng-controller='table2'>               <!-- 多个控制器-->  
+                       <input ng-model="search" type="text"/>  <!--查找数据-->
+                	   <table style='width:50%;'border='1'>
+                	        <tr>
+                	   	        <th>序号</th>
+                	   	        <th>姓名</th>
+                	   	        <th>年龄</th>
+                	        </tr>
+                	       
+                	       <tr ng-repeat="x in arr | filter:{'name':search}">
+                	   	       <td>{{x.id}}</td>
+                	   	       <td>{{x.name}}</td>
+                	   	       <td>{{x.age}}</td>
+                	        </tr>  
+                     </table>
+               </div>
+</div>
+	</body>
+</html>
+<script>
+                  var app1=angular.module('app1',[]) 
+                      app1.controller("table2",function($scope,$http){
+                        	  $scope.search="";
+                        	  $scope.arr=[]      //user.json
+                      	 $http({               
+                      	  	   method:'get',     //'post'
+                      	  	   url:"user.json"
+                      	       }).then(function(response){
+                      	  	        $scope.arr=response.data; 
+                      	  	   },function(response){
+                      	  	 	                        
+                      	       })      
+                     })
+</script>
